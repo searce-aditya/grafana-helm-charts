@@ -3,7 +3,7 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: {{ include "grafana.fullname" . }}
+  name: {{ include "grafana.name" . }}
   namespace: {{ include "grafana.namespace" . }}
   labels:
     {{- include "grafana.labels" . | nindent 4 }}
@@ -16,7 +16,7 @@ spec:
   selector:
     matchLabels:
       {{- include "grafana.selectorLabels" . | nindent 6 }}
-  serviceName: {{ include "grafana.fullname" . }}-headless
+  serviceName: {{ include "grafana.name" . }}-headless
   template:
     metadata:
       labels:
